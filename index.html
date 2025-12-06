@@ -5,381 +5,143 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AeroSense</title>
   <style>
-    /* Reset basique */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+    body { background:#0f172a; color:#f8fafc; line-height:1.6; }
 
-    body {
-      background-color: #0f172a; /* أزرق غامق */
-      color: #f8fafc;
-      line-height: 1.6;
-    }
+    a { text-decoration:none; color:#93c5fd; }
+    a:hover { text-decoration:underline; }
 
-    a {
-      text-decoration: none;
-      color: #93c5fd;
-    }
+    header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; padding:1rem; }
+    .logo { display:flex; align-items:center; gap:1rem; }
+    .logo img { width:60px; height:60px; object-fit:cover; clip-path:polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%); }
+    header h1 { font-size:1.5rem; }
 
-    a:hover {
-      text-decoration: underline;
-    }
+    nav { display:flex; gap:1rem; flex-wrap:wrap; font-size:0.9rem; }
 
-    header {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+    .hero { display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:2rem; padding:2rem; }
+    .hero-text { flex:1; min-width:250px; max-width:600px; }
+    .hero-text h2 { font-size:1.8rem; margin-bottom:1rem; color:#e0f2fe; }
+    .hero-text p { font-size:1rem; margin-bottom:1rem; color:#cbd5e1; }
+    .hero img { flex:1; min-width:200px; max-width:400px; width:100%; height:auto; display:block; margin:auto; border-radius:1rem; }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      max-height: 3rem;
+    .btn-primary, .btn-secondary {
+      padding:0.75rem 1.25rem;
+      border-radius:0.5rem;
+      font-weight:600;
+      display:inline-block;
+      margin-right:0.5rem;
+      margin-top:0.5rem;
+      text-align:center;
     }
+    .btn-primary { background:#1e40af; color:#fff; }
+    .btn-secondary { background:#cbd5e1; color:#1e3a8a; }
 
-    .logo img {
-      width: 100%;
-      max-width: 6.5rem;
-      height: auto;
-      object-fit: contain;
-      border-radius: 0;
-      display: block;
-    }
+    .grid-3, .grid-2 { display:grid; gap:1rem; margin-top:2rem; }
+    @media(min-width:768px){ .grid-3{grid-template-columns:repeat(3,1fr);} .grid-2{grid-template-columns:repeat(2,1fr);} }
 
-    .logo-text h1 {
-      font-size: 2rem;
-      margin: 0;
-    }
+    .card { background:#1e293b; padding:1rem; border-radius:1rem; box-shadow:0 4px 10px rgba(0,0,0,0.3); }
 
-    .logo-text p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: #cbd5e1;
-    }
-
-    nav {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      flex-wrap: wrap;
-    }
-
-    section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    h1, h2, h3, h4, h5 {
-      color: #e0f2fe;
-    }
-
-    h1 { font-size: 4rem; }
-    h2 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; }
-    h3 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; }
-    p { margin-top: 1rem; color: #cbd5e1; }
-
-    ul {
-      list-style: none;
-      margin-top: 1.5rem;
-    }
-
-    ul li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    ul li span:first-child {
-      width: 2rem;
-      height: 2rem;
-      background-color: #93c5fd;
-      color: #1e3a8a;
-      font-weight: bold;
-      border-radius: 9999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-primary {
-      padding: 0.75rem 1.25rem;
-      background-color: #1e40af;
-      color: white;
-      border-radius: 0.5rem;
-      font-weight: 500;
-    }
-
-    .btn-secondary {
-      padding: 0.75rem 1.25rem;
-      background-color: #cbd5e1;
-      color: #1e3a8a;
-      border-radius: 0.5rem;
-      font-weight: 500;
-    }
-
-    .card {
-      background-color: #1e293b;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: #1e293b;
-      border-radius: 1rem;
-      overflow: hidden;
-    }
-
-    table td {
-      padding: 1rem;
-      color: #cbd5e1;
-    }
-
-    table tr:nth-child(even) {
-      background-color: #0f172a;
-    }
-
-    table tr td:first-child {
-      font-weight: 600;
-      color: #93c5fd;
-    }
-
-    footer {
-      border-top: 1px solid #334155;
-      padding: 2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
+    table { width:100%; border-collapse:collapse; background:#1e293b; border-radius:1rem; overflow:hidden; margin-top:1rem; }
+    table td { padding:0.75rem; color:#cbd5e1; }
+    table tr:nth-child(even){background:#0f172a;}
+    table tr td:first-child{font-weight:600; color:#93c5fd;}
 
     form input, form textarea {
-      width: 100%;
-      padding: 0.75rem;
-      border-radius: 0.5rem;
-      border: 1px solid #475569;
-      background-color: #1e293b;
-      color: #f8fafc;
+      width:100%; padding:0.75rem; border-radius:0.5rem; border:1px solid #475569; background:#1e293b; color:#f8fafc; margin-bottom:0.5rem;
     }
+    form textarea{resize:none;}
+    form button{padding:0.75rem 1.25rem; background:#1e40af; color:#fff; border:none; border-radius:0.5rem; font-weight:600; cursor:pointer; margin-top:0.5rem;}
 
-    form textarea {
-      resize: none;
-    }
-
-    form button {
-      padding: 0.75rem 1.25rem;
-      background-color: #1e40af;
-      color: white;
-      border-radius: 0.5rem;
-      font-weight: 500;
-      border: none;
-      cursor: pointer;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      border-radius: 1rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .grid-2 {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    @media(min-width: 768px) {
-      .hero { grid-template-columns: 1fr 1fr; }
-      .grid-3 { grid-template-columns: repeat(3, 1fr); }
-      .grid-2 { grid-template-columns: repeat(2, 1fr); }
-      footer { flex-direction: row; justify-content: space-between; }
-    }
-
-    /* Responsive for small screens */
-    @media(max-width: 480px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.2rem; }
-      nav { font-size: 0.8rem; gap: 1rem; }
-      header { flex-direction: column; align-items: flex-start; }
-    }
-
+    footer { border-top:1px solid #334155; padding:2rem 1rem; display:flex; flex-direction:column; align-items:center; gap:1rem; }
+    footer div{display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;}
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <img src="logo aero.png" alt="AeroSense Logo">
-      <h1>AeroSense</h1>
-    </div>
-    <nav>
-      <a href="#features">Fonctionnalités</a>
-      <a href="#how">Comment ça marche</a>
-      <a href="#specs">Spécifications</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">
+    <img src="logo aero.png" alt="Logo AeroSense">
+    <h1>AeroSense</h1>
+  </div>
+  <nav>
+    <a href="#features">Fonctionnalités</a>
+    <a href="#how">Comment ça marche</a>
+    <a href="#specs">Spécifications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div>
-      <h2>Mesurez, Analysez, Agissez</h2>
-      <p>AeroSense est un dispositif compact, localement développé, qui surveille en temps réel les particules fines (PM) et les oxydes d'azote (NOx). Solution abordable et adaptée au marché algérien.</p>
+<section class="hero">
+  <div class="hero-text">
+    <h2>Mesurez, Analysez, Agissez</h2>
+    <p>AeroSense surveille en temps réel les particules fines et les oxydes d'azote. Solution compacte, abordable et locale.</p>
+    <a href="#contact" class="btn-primary">Nous contacter</a>
+    <a href="#specs" class="btn-secondary">Voir les spécifications</a>
+  </div>
+  <img src="photo aero.png" alt="AeroSense device">
+</section>
+
+<section id="features">
+  <h3>Fonctionnalités clés</h3>
+  <div class="grid-3">
+    <div class="card"><h4>Capteurs haute précision</h4><p>PM2.5 / PM10 / NOx avec étalonnage automatique.</p></div>
+    <div class="card"><h4>Plateforme cloud</h4><p>Tableau de bord temps réel, historique et alertes.</p></div>
+    <div class="card"><h4>Alarme & conformité</h4><p>Alertes configurables et rapports pour respecter normes locales.</p></div>
+  </div>
+</section>
+
+<section id="how">
+  <h3>Comment ça marche</h3>
+  <div class="grid-3">
+    <div class="card"><h5>1. Installation</h5><p>Fixez l'appareil et alimentez-le.</p></div>
+    <div class="card"><h5>2. Mesure & Transmission</h5><p>Transmission via LoRa en temps réel.</p></div>
+    <div class="card"><h5>3. Analyse & Action</h5><p>Algorithmes détectent anomalies et envoient alertes.</p></div>
+  </div>
+</section>
+
+<section id="specs">
+  <h3>Spécifications techniques</h3>
+  <div class="grid-2">
+    <table>
+      <tbody>
+        <tr><td>Mesures</td><td>PM1/PM2.5/PM4/PM10, Gaz, Température, Humidité</td></tr>
+        <tr><td>Précision</td><td>+10 mg/m3 ou 10%</td></tr>
+        <tr><td>Fonctions</td><td>Auto-calibration, Alertes, Rapports automatiques</td></tr>
+        <tr><td>Alimentation</td><td>Batterie rechargeable, charge via 220V AC</td></tr>
+        <tr><td>Connectivité</td><td>Wi-Fi / 4G / LoRa</td></tr>
+      </tbody>
+    </table>
+    <div class="card">
+      <h4>Cas d’usage pour industries:</h4>
       <ul>
-        <li><span>✓</span> <span><strong>Mesures en temps réel</strong> — alertes et historique</span></li>
-        <li><span>✓</span> <span><strong>Calibration automatique</strong> et modèles ML pour précision</span></li>
-        <li><span>✓</span> <span><strong>Connectivité LoRa</strong> pour intégration industrielle</span></li>
+        <li>Surveillance émissions PM2.5, PM10 et NOx.</li>
+        <li>Rapports fiscaux et réglementaires.</li>
+        <li>Alertes légales immédiates.</li>
+        <li>Audit interne pour inspections.</li>
+        <li>Optimisation de la gestion pour réduire taxes et amendes.</li>
       </ul>
-      <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-        <a href="#contact" class="btn-primary">Nous contacter</a>
-        <a href="#specs" class="btn-secondary">Voir les spécifications</a>
-      </div>
-    </div>
-
-    <div>
-      <img src="photo aero.png" 
-     alt="AeroSense device" 
-     style="max-width: 400px; height: auto; display: block; margin-left: 100px;">
-  </section>
-
-  <!-- Features -->
-  <section id="features">
-    <h3>Fonctionnalités clés</h3>
-    <div class="grid-3">
-      <div class="card">
-        <h4>Capteurs haute précision</h4>
-        <p>Capteurs dédiés PM2.5 / PM10 et NOx, avec étalonnage automatique et validation croisée.</p>
-      </div>
-      <div class="card">
-        <h4>Plateforme cloud</h4>
-        <p>Tableau de bord temps réel, historique, export CSV et notifications par seuils.</p>
-      </div>
-      <div class="card">
-        <h4>Alarme et conformité</h4>
-        <p>Alertes configurables et rapports pour aider à respecter les normes locales.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- How it works -->
-  <section id="how">
-    <h3>Comment ça marche</h3>
-    <div class="grid-3">
-      <div class="card">
-        <h5>1. Installation</h5>
-        <p>Fixez l'appareil sur site (atelier, cheminée, zone de contrôle) et alimentez-le.</p>
-      </div>
-      <div class="card">
-        <h5>2. Mesure & Transmission</h5>
-        <p>Les capteurs mesurent et transmettent via LoRa.</p>
-      </div>
-      <div class="card">
-        <h5>3. Analyse & Action</h5>
-        <p>Algorithmes détectent anomalies et envoient des alertes pour interventions rapides.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Specifications -->
-  <section id="specs">
-    <h3>Spécifications techniques</h3>
-    <div class="grid-2">
-      <table>
-        <tbody>
-          <tr><td>Mesures</td><td>PM1 / PM2.5 / PM4 / PM10, Gaz, Température, Humidité</td></tr>
-          <tr><td>Précision</td><td>+10 mg/m3 ou 10% (0-100 pg/m°), t10% (>100 g/m3)</td></tr>
-          <tr><td>Fonctions</td><td>Auto-calibration - Alertes - Rapports automatiques - Maintenance </td></tr>
-          <tr><td>Alimentation</td><td>Batterie rechargeable (2h autonomie), charge via 220V AC</td></tr>
-          <tr><td>Technologie</td><td>IA + algorithmes prédictifs</td></tr>
-          <tr><td>Connectivité</td><td>Wi-Fi / 4G / LoRa</td></tr>
-        </tbody>
-      </table>
-
-      <div class="card">
-        <h4>Cas d’usage d’AeroSense pour les industries taxables:</h4>
-        <ul>
-          <li>Surveillance des émissions : Mesure de PM2.5, PM10 et NOx pour garantir le respect des normes.</li>
-          <li>Rapports fiscaux et réglementaires : Vérification du paiement correct des taxes environnementales.</li>
-          <li>Alertes légales : Notifications immédiates en cas de dépassement des limites.</li>
-          <li>Audit interne : Préparation aux inspections environnementales.</li>
-          <li>Optimisation de la gestion : Réduction des émissions pour diminuer les taxes et amendes.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h3>Contactez-nous</h3>
-    <p>Pour démo, partenariat ou commande, envoyez-nous un message.</p>
-    <form style="margin-top: 1.5rem; display: grid; gap: 1rem;">
-      <input placeholder="Nom" />
-      <input placeholder="Email" />
-      <textarea rows="5" placeholder="Votre message"></textarea>
-      <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
-        <button type="button">Envoyer</button>
-        <span style="color: #cbd5e1; font-size: 0.875rem;">Nous répondrons sous 48h.</span>
-      </div>
-    </form>
-  </section>
-<!-- Contact Info Box Responsive -->
-<section id="contact-info" style="max-width: 1200px; margin: 2rem auto; padding: 1.5rem; background-color: #1e293b; border-radius: 1rem; text-align: center;">
-  <h3 style="margin-bottom: 1rem; color: #93c5fd;">Contactez-nous</h3>
-  <div class="contact-flex" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <span style="font-size: 1.5rem;">📞</span>
-      <a href="tel:+213123456789" style="color: #f8fafc; font-weight: 500;">+213 658970087</a>
-    </div>
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <span style="font-size: 1.5rem;">✉️</span>
-      <a href="mailto:contact@aerosense.dz" style="color: #f8fafc; font-weight: 500;">Aerosense@gmail.com</a>
     </div>
   </div>
 </section>
 
-<style>
-  @media(min-width: 768px) {
-    #contact-info .contact-flex {
-      flex-direction: row; /* أفقي على شاشات كبيرة */
-      justify-content: center;
-      gap: 3rem;
-    }
-  }
-</style>
+<section id="contact">
+  <h3>Contactez-nous</h3>
+  <form>
+    <input placeholder="Nom">
+    <input placeholder="Email">
+    <textarea rows="5" placeholder="Votre message"></textarea>
+    <button type="button">Envoyer</button>
+    <p style="font-size:0.875rem; color:#cbd5e1;">Nous répondrons sous 48h.</p>
+  </form>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 AeroSense — Tous droits réservés</p>
-    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-      <a href="#">Mentions légales</a>
-      <a href="#">Politique de confidentialité</a>
-    </div>
-  </footer>
+<footer>
+  <p>© 2025 AeroSense — Tous droits réservés</p>
+  <div>
+    <span>📞 +213 123 456 789</span>
+    <span>✉️ contact@aerosense.dz</span>
+  </div>
+</footer>
 
 </body>
 </html>
-
