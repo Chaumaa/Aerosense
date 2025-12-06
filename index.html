@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AeroSense </title>
+  <title>AeroSense</title>
   <style>
     /* Reset basique */
     * {
@@ -15,13 +15,13 @@
 
     body {
       background-color: #0f172a; /* أزرق غامق */
-      color: #f8fafc; /* أبيض فاتح للنصوص */
+      color: #f8fafc;
       line-height: 1.6;
     }
 
     a {
       text-decoration: none;
-      color: #93c5fd; /* أزرق فاتح للروابط */
+      color: #93c5fd;
     }
 
     a:hover {
@@ -31,36 +31,45 @@
     header {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 1.5rem 1.5rem;
+      padding: 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 1rem;
+      max-height: 3rem;
     }
 
-    .logo-resct {
-      width: 6rem;
-      height: 3rem;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
+    .logo img {
+      width: 100%;
+      max-width: 6.5rem;
+      height: auto;
+      object-fit: contain;
+      border-radius: 0;
+      display: block;
     }
-     .logo-rect img {
-       width: 100%;       /* الصورة تملأ المستطيل بالكامل */
-       height: 100%;
-       object-fit: contain; /* الصورة تبقى مضبوطة داخل المستطيل */
+
+    .logo-text h1 {
+      font-size: 2rem;
+      margin: 0;
     }
+
+    .logo-text p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+
     nav {
       display: flex;
       gap: 1.5rem;
       font-size: 0.9rem;
+      flex-wrap: wrap;
     }
 
     section {
@@ -75,35 +84,14 @@
       gap: 2.5rem;
     }
 
-    @media(min-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr 1fr;
-      }
-      nav {
-        display: flex;
-      }
-    }
-
     h1, h2, h3, h4, h5 {
-      color: #e0f2fe; /* أزرق فاتح */
+      color: #e0f2fe;
     }
 
-    h2 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      line-height: 1.2;
-    }
-
-    h3 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      margin-top: 1rem;
-      color: #cbd5e1;
-    }
+    h1 { font-size: 4rem; }
+    h2 { font-size: 2.5rem; font-weight: 800; line-height: 1.2; }
+    h3 { font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; }
+    p { margin-top: 1rem; color: #cbd5e1; }
 
     ul {
       list-style: none;
@@ -183,13 +171,6 @@
       gap: 1rem;
     }
 
-    @media(min-width: 768px) {
-      footer {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    }
-
     form input, form textarea {
       width: 100%;
       padding: 0.75rem;
@@ -215,20 +196,14 @@
 
     img {
       width: 100%;
-      border-radius: 2rem;
-      object-fit: cover;
-      height: 35rem;
+      height: auto;
+      object-fit: contain;
+      border-radius: 1rem;
     }
 
     .grid-3 {
       display: grid;
       gap: 1.5rem;
-    }
-
-    @media(min-width: 768px) {
-      .grid-3 {
-        grid-template-columns: repeat(3, 1fr);
-      }
     }
 
     .grid-2 {
@@ -237,9 +212,18 @@
     }
 
     @media(min-width: 768px) {
-      .grid-2 {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .hero { grid-template-columns: 1fr 1fr; }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+      footer { flex-direction: row; justify-content: space-between; }
+    }
+
+    /* Responsive for small screens */
+    @media(max-width: 480px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.2rem; }
+      nav { font-size: 0.8rem; gap: 1rem; }
+      header { flex-direction: column; align-items: flex-start; }
     }
 
   </style>
@@ -248,12 +232,10 @@
 
   <!-- Header -->
   <header>
-     <div class="logo" style="display:flex; align-items:center; gap:1rem;">
-    <img src="logo aero.png" 
-         alt="AeroSense Logo" 
-         style="width:6.5rem; height:3rem; object-fit:contain; border-radius:0; clip-path:none; display:block;">
-          <h1 style="font-size:4rem; margin:0;">AeroSense</h1>
-      </div>
+    <div class="logo">
+      <img src="logo aero.png" alt="AeroSense Logo">
+      <h1>AeroSense</h1>
+    </div>
     <nav>
       <a href="#features">Fonctionnalités</a>
       <a href="#how">Comment ça marche</a>
@@ -264,28 +246,24 @@
 
   <!-- Hero -->
   <section class="hero">
-  <div>
-    <h2 style="font-size:1.5rem;">Mesurez, Analysez, Agissez</h2>
+    <div>
+      <h2>Mesurez, Analysez, Agissez</h2>
       <p>AeroSense est un dispositif compact, localement développé, qui surveille en temps réel les particules fines (PM) et les oxydes d'azote (NOx). Solution abordable et adaptée au marché algérien.</p>
-
       <ul>
         <li><span>✓</span> <span><strong>Mesures en temps réel</strong> — alertes et historique</span></li>
         <li><span>✓</span> <span><strong>Calibration automatique</strong> et modèles ML pour précision</span></li>
         <li><span>✓</span> <span><strong>Connectivité LoRa</strong> pour intégration industrielle</span></li>
       </ul>
-
-      <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+      <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
         <a href="#contact" class="btn-primary">Nous contacter</a>
         <a href="#specs" class="btn-secondary">Voir les spécifications</a>
       </div>
     </div>
 
     <div>
-    <img src="photo aero.png" 
+      <img src="photo aero.png" 
      alt="AeroSense device" 
-     style="width:400px; height:auto; object-fit:contain; display:block; margin-left:100px;">
-
-
+     style="max-width: 400px; height: auto; display: block; margin-left: 100px;">
   </section>
 
   <!-- Features -->
@@ -337,7 +315,7 @@
           <tr><td>Fonctions</td><td>Auto-calibration - Alertes - Rapports automatiques - Maintenance </td></tr>
           <tr><td>Alimentation</td><td>Batterie rechargeable (2h autonomie), charge via 220V AC</td></tr>
           <tr><td>Technologie</td><td>IA + algorithmes prédictifs</td></tr>
-          <tr><td>Connectivité</td><td>Wi-Fi / 4G / lora</td></tr>
+          <tr><td>Connectivité</td><td>Wi-Fi / 4G / LoRa</td></tr>
         </tbody>
       </table>
 
@@ -358,22 +336,45 @@
   <section id="contact">
     <h3>Contactez-nous</h3>
     <p>Pour démo, partenariat ou commande, envoyez-nous un message.</p>
-
     <form style="margin-top: 1.5rem; display: grid; gap: 1rem;">
       <input placeholder="Nom" />
       <input placeholder="Email" />
       <textarea rows="5" placeholder="Votre message"></textarea>
-      <div style="display: flex; align-items: center; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
         <button type="button">Envoyer</button>
         <span style="color: #cbd5e1; font-size: 0.875rem;">Nous répondrons sous 48h.</span>
       </div>
     </form>
   </section>
+<!-- Contact Info Box Responsive -->
+<section id="contact-info" style="max-width: 1200px; margin: 2rem auto; padding: 1.5rem; background-color: #1e293b; border-radius: 1rem; text-align: center;">
+  <h3 style="margin-bottom: 1rem; color: #93c5fd;">Contactez-nous</h3>
+  <div class="contact-flex" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span style="font-size: 1.5rem;">📞</span>
+      <a href="tel:+213123456789" style="color: #f8fafc; font-weight: 500;">+213 658970087</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span style="font-size: 1.5rem;">✉️</span>
+      <a href="mailto:contact@aerosense.dz" style="color: #f8fafc; font-weight: 500;">Aerosense@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media(min-width: 768px) {
+    #contact-info .contact-flex {
+      flex-direction: row; /* أفقي على شاشات كبيرة */
+      justify-content: center;
+      gap: 3rem;
+    }
+  }
+</style>
 
   <!-- Footer -->
   <footer>
     <p>© 2025 AeroSense — Tous droits réservés</p>
-    <div style="display: flex; gap: 1rem;">
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
       <a href="#">Mentions légales</a>
       <a href="#">Politique de confidentialité</a>
     </div>
@@ -381,3 +382,4 @@
 
 </body>
 </html>
+
